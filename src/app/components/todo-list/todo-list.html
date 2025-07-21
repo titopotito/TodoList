@@ -1,0 +1,13 @@
+<ul>
+    <li *ngFor="let todo of data; let index = index">
+        @if (!todo.isDone) {
+            <p title="{{ todo.text }}">{{ todo.text }}</p>
+        } @else {
+            <p title="{{ todo.text }}" class="td-done">{{ todo.text }}</p>
+        }
+        <div>
+            <td-update-btn [index]="index"></td-update-btn>
+            <td-trash-btn [index]="index"></td-trash-btn>
+        </div>
+    </li>
+</ul>
