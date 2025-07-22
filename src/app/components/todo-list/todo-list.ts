@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { UpdateButton } from './components/update-button';
 import { TrashButton } from './components/trash-button';
-import tdData from '../../test-data/todo';
-import { effect } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import tdData from '../../test-data/todo';
 
 @Component({
   selector: 'td-list',
@@ -12,9 +11,9 @@ import { CommonModule } from '@angular/common';
   styleUrl: 'todo-list.css',
 })
 export class TodoList implements OnInit {
-  data: { text: string; isDone: boolean }[] = [];
+  data = signal<typeof tdData>([]);
 
   ngOnInit(): void {
-    this.data = tdData;
+    this.data.set(tdData);
   }
 }
